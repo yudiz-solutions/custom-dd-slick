@@ -1,0 +1,90 @@
+//Basic Drop down using JSON
+
+$('#demoBasic').ddslick({
+    data: ddData,
+    width: 300,
+    imagePosition: "left",
+    selectText: "Select your favorite social network",
+    onSelected: function (data) {
+        console.log(data);
+    }
+});
+
+
+
+//Render from HTML select options
+
+//Make it slick!
+$('#make-it-slick').on('click', function(){
+    $('#demo-htmlselect').ddslick();
+});
+//Restore Original
+$('#restore').on('click', function(){
+    $('#demo-htmlselect').ddslick('destroy');
+});
+
+
+//GET Selected Dropdown Option
+
+$('#demoShowSelected').ddslick({
+    data: ddData,
+    selectText: "Select your favorite social network",
+});
+$('#showSelectedData').on('click', function () {
+    var ddData = $('#demoShowSelected').data('ddslick');
+    displaySelectedData("2: Getting Selected Dropdown Data" , ddData);
+});
+
+
+//SET selected Dropdown Option
+
+$('#demoSetSelected').ddslick({
+    data: ddData,
+    selectText: "Select your favorite social network"
+});
+$('#btnSetSelected').on('click', function () {
+    var i = $('#setIndex').val();
+    if(i >= 0 && i <5)
+       $('#demoSetSelected').ddslick('select', {index: i });
+    else 
+       $('#setIndexMsg').effect('highlight',2400);
+});	
+
+
+//Callback Function on Dropdown Selection
+
+$('#demoCallback').ddslick({
+    data: ddData,
+    selectText: "Select your favorite social network",
+    onSelected: function(data){
+        displaySelectedData("3: Callback Function on Dropdown Selection" , data);
+    }
+});
+
+//Dropdown with default selection
+
+$('#demoDefaultSelection').ddslick({
+    data: ddData,
+    defaultSelectedIndex:2
+});
+
+//Dropdown with image on right
+
+$('#demoImageRight').ddslick({
+    data: ddData,
+    imagePosition:"right",
+    selectText: "Select your favorite social network"
+});
+
+//Dropdown with no image or description
+
+var ddBasic = [
+    { text: "Facebook", value: 1, },
+    { text: "Twitter", value: 2, },
+    { text: "LinkedIn", value: 3, },
+    { text: "Foursquare", value: 4, }
+];
+$('#divNoImage').ddslick({
+    data: ddBasic,
+    selectText: "Select your favorite social network"
+});
